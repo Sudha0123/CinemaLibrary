@@ -1,0 +1,12 @@
+.container-fluid{
+  background-image: url("../public/images/tfi3.jpg");
+   height: 100vh;
+   background-size: cover;
+   background-position: center;
+
+}
+
+.bg-shade{
+  background-color: rgba(0,0,0, 0.5);
+  height:100vh
+}
