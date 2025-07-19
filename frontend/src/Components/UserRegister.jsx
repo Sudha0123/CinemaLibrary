@@ -14,7 +14,7 @@ export function UserRegister(){
             
         },
         onSubmit:(user)=>{
-            axios.post("http://127.0.0.1:3334/reguser",user)
+            axios.post("https://cinemalibrary.onrender.com/reguser",user)
             alert("register user successfully")
             navigate("/userlogin")
 
