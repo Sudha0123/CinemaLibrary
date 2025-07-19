@@ -9,7 +9,7 @@ export function UserDashboard() {
 
   // Load categories on page load
   useEffect(() => {
-    axios.get("http://localhost:3334/getcategories").then((res) => {
+    axios.get("https://cinemalibrary.onrender.com/getcategories").then((res) => {
       // const categoriesWithSelect = [
       //   { Category_Id: -1, CategoryName: "Select Category" },
       //   ...res.data,
@@ -30,12 +30,12 @@ export function UserDashboard() {
   useEffect(() => {
   if (selectedCategoryId === "" || selectedCategoryId === -1) {
     // Load all videos
-    axios.get("http://localhost:3334/Videos").then((res) => {
+    axios.get("https://cinemalibrary.onrender.com/Videos").then((res) => {
       setVideos(res.data);
     });
   } else {
     // Load videos for selected category
-    axios.get(`http://localhost:3334/Videoscat/${selectedCategoryId}`).then((res) => {
+    axios.get(`https://cinemalibrary.onrender.com/Videoscat/${selectedCategoryId}`).then((res) => {
       setVideos(res.data);
     });
   }
