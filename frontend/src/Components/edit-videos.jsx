@@ -26,14 +26,14 @@ export function EditVideo(){
         },
         enableReinitialize: true,
         onSubmit: (values) => {
-            axios.put(`http://127.0.0.1:3334/updatevideos/${params.id}`,values);
+            axios.put(`https://cinemalibrary.onrender.com/updatevideos/${params.id}`,values);
             alert('Video Updated..');
             navigate('/admindashboard');
         }
     })
 
     function LoadCategories(){
-        axios.get('http://127.0.0.1:3334/getcategories')
+        axios.get('https://cinemalibrary.onrender.com/getcategories')
         .then(response=>{
             response.data.unshift({Category_Id:-1, CategoryName:'Select Category'});
             setCategories(response.data);
@@ -42,7 +42,7 @@ export function EditVideo(){
 
     useEffect(()=>{
         LoadCategories();
-        axios.get(`http://127.0.0.1:3334/Videosid/${params.id}`)
+        axios.get(`https://cinemalibrary.onrender.com/Videosid/${params.id}`)
         .then(response=>{
             setVideos(response.data);
         })
