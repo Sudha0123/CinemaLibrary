@@ -12,14 +12,14 @@ export function DeleteVideo()
     let params = useParams();
 
     useEffect(()=>{
-        axios.get(`http://127.0.0.1:3334/Videosid/${params.id}`)
+        axios.get(`https://cinemalibrary.onrender.com/Videosid/${params.id}`)
         .then(response=>{
             setVideos(response.data);
         })
     },[]);
 
     function handleDeleteClick(){
-        axios.delete(`http://127.0.0.1:3334/deletevideos/${params.id}`);
+        axios.delete(`https://cinemalibrary.onrender.com/deletevideos/${params.id}`);
         alert('Video Deleted');
         navigate('/admindashboard');
     }
