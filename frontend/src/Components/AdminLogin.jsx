@@ -37,7 +37,7 @@ const [cookies, setCookie, removeCookie] = useCookies('adminName');
 
 
    useEffect(function(){
-    axios.get('http://127.0.0.1:3334/getadmin')
+    axios.get('https://cinemalibrary.onrender.com/getadmin')
     // .then((response) => {
     //     setUsers(response.data);
     // })
