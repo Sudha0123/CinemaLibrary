@@ -17,7 +17,7 @@ Likes:'',DisLikes:'',Views:'' ,Comments:'',CategoryId:''}])
     let navigate = useNavigate();
 
     function LoadVideos(){
-        axios.get("http://127.0.0.1:3334/Videos")
+        axios.get("https://cinemalibrary.onrender.com/Videos")
         .then((response)=>{
             setVideo(response.data);
         })
