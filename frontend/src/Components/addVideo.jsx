@@ -22,14 +22,14 @@ export function AddVideo(){
             Category1Id:0
         },
         onSubmit : (values)=>{
-            axios.post('http://127.0.0.1:3334/addvideos', values);
+            axios.post('https://cinemalibrary.onrender.com/addvideos', values);
             alert('Video Added Successfully..');
             navigate('/admindashboard');
         }
     })
 
     function LoadCategories(){
-        axios.get('http://127.0.0.1:3334/getcategories')
+        axios.get('https://cinemalibrary.onrender.com/getcategories')
         .then(response=>{
             response.data.unshift({CategoryId:-1, CategoryName:'Select Category'});
             setCategories(response.data);
