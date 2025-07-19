@@ -29,7 +29,7 @@ export function VideoMain() {
    
 
     useEffect(()=>{
-        axios.get('http://127.0.0.1:3334/getusers')
+        axios.get('https://cinemalibrary.onrender.com/getusers')
         .then(response => {
             setUsers(response.data);
         })
