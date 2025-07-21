@@ -8,7 +8,7 @@ export function UserRegister(){
         initialValues:{
             UserId:"",
             UserName:"",
-            password:'',
+            Password:'',
             Email:" ",
             Mobile:'',
             
@@ -31,7 +31,7 @@ export function UserRegister(){
                 <dt>UserName</dt>
                 <dd><input type="text" name="UserName" onChange={formik.handleChange}/></dd>
                 <dt>password</dt>
-                <dd><input type="password"  name="password" onChange={formik.handleChange} /></dd>
+                <dd><input type="password"  name="Password" onChange={formik.handleChange} /></dd>
                 <dt>email</dt>
                 <dd><input type="email" name="Email" onChange={formik.handleChange}/></dd>
                 <dt>Mobile</dt>
