@@ -1,11 +1,15 @@
 // 
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useCookies } from "react-cookie";
 
 export function UserDashboard() {
   const [categories, setCategories] = useState([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState("");
   const [videos, setVideos] = useState([]);
+  
+       const [cookie,setCookie,removeCookie]=useCookies('userName')
+         const [isLoading, setIsLoading] = useState(false);
 
   // Load categories on page load
   useEffect(() => {
@@ -28,15 +32,18 @@ export function UserDashboard() {
   // }, [selectedCategoryId]);
 
   useEffect(() => {
+    setIsLoading(true);
   if (selectedCategoryId === "" || selectedCategoryId === -1) {
     // Load all videos
     axios.get("https://cinemalibrary.onrender.com/Videos").then((res) => {
       setVideos(res.data);
+      setIsLoading(false);
     });
   } else {
     // Load videos for selected category
     axios.get(`https://cinemalibrary.onrender.com/Videoscat/${selectedCategoryId}`).then((res) => {
       setVideos(res.data);
+      setIsLoading(false);
     });
   }
 }, [selectedCategoryId]);
@@ -44,7 +51,7 @@ export function UserDashboard() {
 
   return (
     <div>
-      <h2>User Dashboard</h2>
+      <h2 style={{color:"gold"}}><span style={{color:"red"}}>UserDashboard</span>-{cookie['userName']}</h2>
 
       {/* Dropdown to choose category */}
        <div>
@@ -69,34 +76,22 @@ export function UserDashboard() {
 
     
 
-
-      {/* Display videos */}
-      {/* <div>
-        <h3>Videos</h3>
-        {videos.length === 0 && selectedCategoryId && (
-          <p>No videos found for this category</p>
-        )}
-        <ul>
-          {videos.map((video) => (
-            <li key={video.VideoId}>
-              <h4>{video.Title}</h4>
-              <iframe
-                width="300"
-                height="200"
-                src={video.URL}
-                title={video.Title}
-              ></iframe>
-              <p>{video.Description}</p>
-            </li>
-          ))}
-        </ul>
-      </div> */}
+  {isLoading && (
+        <div className="text-center my-4">
+          <div className="spinner-border text-danger" role="status"></div>
+          <p>Loading videos...</p>
+        </div>
+      )}
+      {!isLoading && videos.length === 0 && (
+        <div className="alert alert-warning">No videos found for this category</div>
+      )}
+    
       <div className="container mt-4">
   <h3 className="mb-4">Videos</h3>
 
-  {videos.length === 0 && selectedCategoryId && (
+  {/* {videos.length === 0 && selectedCategoryId && (
     <div className="alert alert-warning">No videos found for this category</div>
-  )}
+  )} */}
 
   <div className="row">
     {videos.map((video) => (
