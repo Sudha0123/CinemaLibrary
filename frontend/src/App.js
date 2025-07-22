@@ -11,6 +11,20 @@ import { AddVideo } from './Components/addVideo';
 import { DeleteVideo } from './Components/delete-video';
 import { EditVideo } from './Components/edit-videos';
 import { UserDashboard } from './Components/UserDashboard';
+import { useCookies } from 'react-cookie';
+
+
+function SignoutComponent(){
+   const [cookie, setCookie, removeCookie] = useCookies('userName');
+   let navigate = useNavigate();
+   function handleSignout(){
+      removeCookie('userName');
+      navigate('/userlogin');
+     }
+   return(
+      <button onClick={handleSignout} className='btn btn-light me-2'>Signout</button>
+   )
+}
 
 
 
@@ -18,6 +32,7 @@ import { UserDashboard } from './Components/UserDashboard';
 
 
 function App() {
+   const [cookie, setCookie, removeCookie] = useCookies('userName');
 return(
   <div className="container-fluid"> 
 <div className='bg-shade'>
@@ -28,7 +43,8 @@ return(
 </div>
 
 <div>
-<span className='h4'><Link to='/userlogin' className='btn btn-light'>UserLogin</Link></span>
+  {(cookie['userName']===undefined) ? <Link className='btn btn-light me-2' to='/userlogin'>User Signin</Link> : <SignoutComponent/>}
+{/* <span className='h4'><Link to='/userlogin' className='btn btn-light'>UserLogin</Link></span> */}
 <span className='h4'><Link to='/adminlogin'className='btn btn-light ms-2'><span className='bi bi-person-fill'></span>Admin Dasboard</Link></span>
  
 </div>
