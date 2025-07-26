@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 
 function RegisterClick(){
 
@@ -17,6 +18,7 @@ function RegisterClick(){
 export function VideoMain() {
 
     const[users,setUsers]=useState([{UserId:'', UserName:'', Password:'', Email:'', Mobile:''}])
+    const [cookie,setCookie,removeCookie]=useCookies('userName')
 
     const[email,setEmail]=useState('')
     const[error,setError]=useState('')
@@ -64,6 +66,7 @@ export function VideoMain() {
     function handleLogin(){
         if (login && login.Password === password) {
       
+            setCookie('userName', login.UserName);
             
             // redirect or take user to the videos page
             alert('Login successful');
