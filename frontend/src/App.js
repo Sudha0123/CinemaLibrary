@@ -15,7 +15,7 @@ import { useCookies } from 'react-cookie';
 
 
 function SignoutComponent(){
-   const [cookie, setCookie, removeCookie] = useCookies('userName');
+   const [cookie, setCookie, removeCookie] = useCookies(['userName']);
    let navigate = useNavigate();
    function handleSignout(){
       removeCookie('userName');
@@ -32,7 +32,7 @@ function SignoutComponent(){
 
 
 function App() {
-   const [cookie, setCookie, removeCookie] = useCookies('userName');
+   const [cookie, setCookie, removeCookie] = useCookies(['userName']);
 return(
   <div className="container-fluid"> 
 <div className='bg-shade'>
