@@ -16,18 +16,18 @@ export function UserDashboard() {
 
   const dispatch = useDispatch();
 
-  // ✅ Redux selectors
+
   const videosCount = useSelector((state) => state.store.videosCount);
   const myLibrary = useSelector((state) => state.store.MyVideoLibrary);
 
-  // ✅ Load categories on page load
+ 
   useEffect(() => {
     axios.get("https://cinemalibrary.onrender.com/getcategories").then((res) => {
       setCategories(res.data);
     });
   }, []);
 
-  // ✅ Load videos based on selected category
+  
   useEffect(() => {
     setIsLoading(true);
     const endpoint =
